@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:url_launcher/url_launcher.dart';
+/*import 'package:url_launcher/url_launcher.dart';*/
 
 import 'settings/settings_view.dart';
 import 'custom_tree_view.dart';
@@ -10,9 +10,9 @@ https://github.com/mbaumgartenbr/flutter_tree_view/tree/main/example
 ''';
 
 void _launchExampleSourceCode() {
-  canLaunch(url).then((bool canLaunch) {
+/*  canLaunch(url).then((bool canLaunch) {
     if (canLaunch) launch(url);
-  });
+  });*/
 }
 
 class HomePage extends StatelessWidget {

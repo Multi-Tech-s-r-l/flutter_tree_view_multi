@@ -22,6 +22,7 @@ class TreeView extends StatefulWidget {
     this.shrinkWrap = false,
     this.padding,
     this.scrollController,
+    this.physics,
   }) : super(key: key);
 
   /// The instance of [TreeController] to control nodes from outside of
@@ -40,6 +41,9 @@ class TreeView extends StatefulWidget {
   /// See [ListView.shrinkWrap].
   final bool shrinkWrap;
 
+  ///
+  /// Define the scrolling behaviour
+  final ScrollPhysics? physics;
   /// Called, as needed, to build node widgets.
   /// Nodes are only built when they're scrolled into view.
   ///
@@ -150,6 +154,7 @@ class _TreeViewState extends State<TreeView> {
       controller: controller,
       theme: widget.theme,
       child: ListView.custom(
+        physics: widget.physics,
         controller: widget.scrollController,
         padding: widget.padding,
         shrinkWrap: widget.shrinkWrap,
