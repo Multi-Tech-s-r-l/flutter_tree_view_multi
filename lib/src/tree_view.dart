@@ -155,23 +155,27 @@ class _TreeViewState extends State<TreeView> {
       theme: widget.theme,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          child: ListView.custom(
-            physics: widget.physics,
-            controller: widget.scrollController,
-            padding: widget.padding,
-            shrinkWrap: widget.shrinkWrap,
-            itemExtent: widget.nodeHeight,
-            childrenDelegate: SliverChildBuilderDelegate(
-              _nodeBuilder,
-              childCount: controller.visibleNodes.length,
-              findChildIndexCallback: (Key key) {
-                final index = controller.indexOf((key as ValueKey<TreeNode>).value);
-                return index < 0 ? null : index;
-              },
-            ),
-          ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return Container(
+              width: constraints.minWidth,
+              child: ListView.custom(
+                physics: widget.physics,
+                controller: widget.scrollController,
+                padding: widget.padding,
+                shrinkWrap: widget.shrinkWrap,
+                itemExtent: widget.nodeHeight,
+                childrenDelegate: SliverChildBuilderDelegate(
+                  _nodeBuilder,
+                  childCount: controller.visibleNodes.length,
+                  findChildIndexCallback: (Key key) {
+                    final index = controller.indexOf((key as ValueKey<TreeNode>).value);
+                    return index < 0 ? null : index;
+                  },
+                ),
+              ),
+            );
+          }
         ),
       ),
     );
