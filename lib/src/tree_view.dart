@@ -164,11 +164,10 @@ class _TreeViewState extends State<TreeView> {
       theme: widget.theme,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return Container(
-              width: widget.width,
-              height: widget.height,
+        child:
+             Container(
+               width: widget.width,
+               height: widget.height,
               child: ListView.custom(
                 physics: widget.physics,
                 controller: widget.scrollController,
@@ -184,10 +183,10 @@ class _TreeViewState extends State<TreeView> {
                   },
                 ),
               ),
-            );
-          }
-        ),
-      ),
+            )
+
+
+      )
     );
   }
 

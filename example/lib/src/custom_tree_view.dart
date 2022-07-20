@@ -25,6 +25,7 @@ class _CustomTreeViewState extends State<CustomTreeView> {
           child: TreeView(
             controller: appController.treeController,
             theme: treeViewTheme,
+            physics: NeverScrollableScrollPhysics(),
             scrollController: appController.scrollController,
             nodeHeight: appController.nodeHeight,
             nodeBuilder: (_, __) => const TreeNodeTile(),
