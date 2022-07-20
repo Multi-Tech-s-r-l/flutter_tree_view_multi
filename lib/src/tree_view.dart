@@ -158,7 +158,7 @@ class _TreeViewState extends State<TreeView> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Container(
-              width: constraints.minWidth,
+              width: constraints.maxWidth,
               child: ListView.custom(
                 physics: widget.physics,
                 controller: widget.scrollController,
