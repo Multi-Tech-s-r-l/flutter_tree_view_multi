@@ -23,6 +23,8 @@ class TreeView extends StatefulWidget {
     this.padding,
     this.scrollController,
     this.physics,
+    this.width = 500,
+    this.height,
   }) : super(key: key);
 
   /// The instance of [TreeController] to control nodes from outside of
@@ -44,6 +46,13 @@ class TreeView extends StatefulWidget {
   ///
   /// Define the scrolling behaviour
   final ScrollPhysics? physics;
+
+  /// Define the width of treeview (necessary beacause the list grow in vertical direction but need to remain scrollable to horizontal direction)
+  final double width;
+
+  /// Define the height of treeview (to use in combination with [physics])
+  final double? height;
+
   /// Called, as needed, to build node widgets.
   /// Nodes are only built when they're scrolled into view.
   ///
@@ -158,7 +167,8 @@ class _TreeViewState extends State<TreeView> {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Container(
-              width: constraints.maxWidth,
+              width: widget.width,
+              height: widget.height,
               child: ListView.custom(
                 physics: widget.physics,
                 controller: widget.scrollController,
